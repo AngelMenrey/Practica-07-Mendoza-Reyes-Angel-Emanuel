@@ -1,8 +1,16 @@
+
+import javax.swing.JOptionPane;
+
 public class PilaLibro {
     public NodoLibro pila;
+    private int cantnodos;
     
      public PilaLibro(){
         pila = null;
+    }
+
+    public int getCantnodos() {
+        return cantnodos;
     }
      
      public void push(Libro libro){
@@ -16,25 +24,25 @@ public class PilaLibro {
             pila = nuevo;
             nuevo.setAptSiguiente(aux);
         }
+        cantnodos++;
     }
-      
-        public String recorrerPila(){
-          String datos = "";
-          NodoLibro aux = pila;
-        
-        if(pila == null){
-           datos = "LA LISTA ESTA VACIA";
+     
+    public Libro [] recorrerPila(){
+    NodoLibro aux = pila;
+    Libro[] libros = new Libro[cantnodos];
+    int j=0;
+    int I=1;
+    if(pila==null){
+    JOptionPane.showMessageDialog(null, "pila esta vacia"); 
+    }else {
+        while(aux != null){
+           libros[j]= aux.getLibro();
+            aux = aux.getAptSiguiente();
+            j++;
+            I++;
         }
-        else{
-            while(aux != null){
-                datos+= "EL AUTOR DEL LIBRO : "+aux.getLibro().getAutor()+"\n";
-                datos+= "El NOMBRE DEL LIBRO: "+aux.getLibro().getNom_libro()+"\n";
-                datos+= "LA EDITORIAL DEL LIBRO: "+aux.getLibro().getEditorial()+"\n";
-                datos+= "El NUMERO DE PAGINAS DEL LIBRO: "+aux.getLibro().getNum_paginas()+"\n";
-                aux = aux.getAptSiguiente();
-            }
-        }
-        return datos;
+    }
+    return libros;
     }
     
     public String pop(){
@@ -51,6 +59,7 @@ public class PilaLibro {
                 pila = aux.getAptSiguiente();
                 mensaje = "SE ELIMINO CORRECTAMENTE";
             }
+            cantnodos--;
         }
         return mensaje;
     }

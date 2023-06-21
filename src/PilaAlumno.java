@@ -1,13 +1,21 @@
+
+import javax.swing.JOptionPane;
+
 public class PilaAlumno {
     
     public NodoAlumno pila;
-    
+    private int cantnodos;
     public PilaAlumno(){
         pila = null;
     }
+
+    public int getCantnodos() {
+        return cantnodos;
+    }
     
-      public void push(Alumnos alumno){
-        NodoAlumno nuevo = new NodoAlumno(alumno);
+    
+     public void push(Alumnos alumno){
+     NodoAlumno nuevo = new NodoAlumno(alumno);
         
         if(pila == null){
             pila = nuevo;
@@ -17,26 +25,27 @@ public class PilaAlumno {
             pila = nuevo;
             nuevo.setAptSiguiente(aux);
         }
+        cantnodos++;
     }
       
-        public String recorrerPila(){
-          String datos = "";
-          NodoAlumno aux = pila;
-        
-        if(pila == null){
-           datos = "LA LISTA ESTA VACIA";
+    public Alumnos [] recorrerPila(){
+    NodoAlumno aux = pila;
+    Alumnos[] alumnos = new Alumnos[cantnodos];
+    int j=0;
+    int I=1;
+    if(pila==null){
+    JOptionPane.showMessageDialog(null, "pila esta vacia");
+    }else {
+        while(aux != null){
+           alumnos[j]= aux.getAlumno();
+            aux = aux.getAptSiguiente();
+            j++;
+            I++;
         }
-        else{
-            while(aux != null){
-                datos+= "EL NOMBRE DEL ALUMNO : "+aux.getAlumno().getNombre()+"\n";
-                datos+= "EL APELLIDO DEL ALUMNO: "+aux.getAlumno().getApellido()+"\n";
-                datos+= "EL DOMICILIO DEL ALUMNO: "+aux.getAlumno().getDomicilio()+"\n";
-                datos+= "EL REGISTRO DEL ALUMNO: "+aux.getAlumno().getRegistro()+"\n";
-                aux = aux.getAptSiguiente();
-            }
-        }
-        return datos;
     }
+    return alumnos;
+    }
+        
     
     public String pop(){
         String mensaje =  "";
@@ -52,6 +61,7 @@ public class PilaAlumno {
                 pila = aux.getAptSiguiente();
                 mensaje = "SE ELIMINO CORRECTAMENTE";
             }
+            cantnodos--;
         }
         return mensaje;
     }

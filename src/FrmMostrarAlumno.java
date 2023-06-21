@@ -1,29 +1,45 @@
+
+import javax.swing.table.DefaultTableModel;
+
 public class FrmMostrarAlumno extends javax.swing.JFrame {
 
     FrmMenu menu;
-    
+    PilaAlumno pila = new PilaAlumno();
     public FrmMostrarAlumno(FrmMenu menu, PilaAlumno pila) {
     initComponents();
     setLocationRelativeTo(null);
     this.menu = menu;
-    TEXTAREA.append(pila.recorrerPila());
+     
+        Alumnos arregloAlumnos[]= new Alumnos[pila.getCantnodos()];
+        arregloAlumnos = pila.recorrerPila();
+        DefaultTableModel modelo = new  DefaultTableModel();
+        
+        String [] cabecera = {"nombre","apellido", "docimilio", "registro"};
+        modelo.setColumnIdentifiers(cabecera);
+        Object [] datos  = new Object[4];
+        
+        for (int i=0; i<pila.getCantnodos(); i++){
+         datos[0] = arregloAlumnos[i].getNombre();
+         datos[1] = arregloAlumnos[i].getApellido();
+         datos[2] = arregloAlumnos[i].getDomicilio();
+         datos[3]= arregloAlumnos[i].getRegistro();
+         modelo.addRow(datos);
+        }
+        JTable.setModel(modelo);
+
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TEXTAREA = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         LIMPIAR = new javax.swing.JButton();
         REGRESAR = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        TEXTAREA.setColumns(20);
-        TEXTAREA.setRows(5);
-        jScrollPane1.setViewportView(TEXTAREA);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setText("DATOS ALUMNO");
@@ -44,37 +60,49 @@ public class FrmMostrarAlumno extends javax.swing.JFrame {
             }
         });
 
+        JTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(JTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(LIMPIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(REGRESAR, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(LIMPIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(REGRESAR, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(164, 164, 164))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LIMPIAR)
-                    .addComponent(REGRESAR))
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(LIMPIAR))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(REGRESAR)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -86,7 +114,7 @@ public class FrmMostrarAlumno extends javax.swing.JFrame {
     }//GEN-LAST:event_REGRESARActionPerformed
 
     private void LIMPIARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LIMPIARActionPerformed
-    TEXTAREA.setText("");
+    JTable.clearSelection();
     }//GEN-LAST:event_LIMPIARActionPerformed
 
     public static void main(String args[]) {
@@ -99,10 +127,10 @@ public class FrmMostrarAlumno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable JTable;
     private javax.swing.JButton LIMPIAR;
     private javax.swing.JButton REGRESAR;
-    private javax.swing.JTextArea TEXTAREA;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

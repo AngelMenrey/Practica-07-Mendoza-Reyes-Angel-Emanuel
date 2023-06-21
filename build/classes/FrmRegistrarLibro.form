@@ -137,10 +137,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="NOMBRELIBRO">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NOMBRELIBROActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="NOMBREEDITORIAL">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NOMBREEDITORIALActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="NOMBREAUTOR">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NOMBREAUTORActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="NUMERODEPAGINAS">
       <Events>

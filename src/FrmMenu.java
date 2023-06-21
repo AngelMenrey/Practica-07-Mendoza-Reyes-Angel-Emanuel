@@ -1,12 +1,43 @@
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.util.List;
+import javax.swing.ImageIcon;
+import java.awt.Cursor;
+import java.awt.Point;
+
+
 public class FrmMenu extends javax.swing.JFrame {
-    
+   
     private PilaLibro pilaLibro = new PilaLibro();
     private PilaPrestamo pilaPrestamo = new PilaPrestamo();
     private PilaAlumno pilaAlumno = new PilaAlumno();
-    
     public FrmMenu() {
     initComponents();
-    setLocationRelativeTo(null);    
+    setLocationRelativeTo(null);
+    
+    ImageIcon img = new ImageIcon("src/Imagenes/alumno.png");
+    Cursor c;
+    Toolkit tk = Toolkit.getDefaultToolkit();
+    c = tk.createCustomCursor(img.getImage(),new Point(1,1) , null);
+    setCursor(c);
+    Malumnos.setCursor(c);
+    
+    ImageIcon img1 = new ImageIcon("src/Imagenes/Libro.png");
+    Cursor c1;
+    Toolkit tk1 = Toolkit.getDefaultToolkit();
+    c1 = tk1.createCustomCursor(img1.getImage(),new Point(1,1) , null);
+    setCursor(c1);
+    Mlibros.setCursor(c1);
+    
+    
+    ImageIcon img2 = new ImageIcon("src/Imagenes/Prestamo.png");
+    Cursor c2;
+    Toolkit tk2 = Toolkit.getDefaultToolkit();
+    c2 = tk2.createCustomCursor(img2.getImage(),new Point(1,1) , null);
+    setCursor(c2);
+    Mprestamos.setCursor(c2);
+    
+    
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -26,14 +57,15 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         SALIR = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
+        Malumnos = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        Mlibros = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        Mprestamos = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
 
@@ -64,7 +96,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setText("BIENVENIDO AL REGISTRO DE DATOS DE LA BIBLIOTECA");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 51));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setForeground(new java.awt.Color(204, 255, 204));
 
         SALIR.setBackground(new java.awt.Color(255, 0, 0));
         SALIR.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -75,29 +108,37 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\CETI COLOMOS 1 SEMESTRE\\TERCER SEMESTRE 3\\Programacion Orientada a Eventos (POE)\\Projects POE\\Practica 11 Mendoza Reyes Angel Emanuel\\src\\Imagenes\\biblioteca.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addComponent(SALIR)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addGap(219, 219, 219)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SALIR)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(SALIR, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 204, 0));
 
-        jMenu4.setText("ALUMNOS");
-        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+        Malumnos.setText("ALUMNOS");
+        Malumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Malumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu4ActionPerformed(evt);
+                MalumnosActionPerformed(evt);
             }
         });
 
@@ -108,7 +149,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMenuItem12ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem12);
+        Malumnos.add(jMenuItem12);
 
         jMenuItem13.setBackground(new java.awt.Color(255, 153, 0));
         jMenuItem13.setText("MOSTRAR");
@@ -117,14 +158,14 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMenuItem13ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem13);
+        Malumnos.add(jMenuItem13);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(Malumnos);
 
-        jMenu2.setText("LIBROS");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        Mlibros.setText("LIBROS");
+        Mlibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                MlibrosActionPerformed(evt);
             }
         });
 
@@ -135,7 +176,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMenuItem11ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem11);
+        Mlibros.add(jMenuItem11);
 
         jMenuItem15.setBackground(new java.awt.Color(255, 153, 51));
         jMenuItem15.setText("MOSTRAR");
@@ -144,11 +185,11 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMenuItem15ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem15);
+        Mlibros.add(jMenuItem15);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(Mlibros);
 
-        jMenu5.setText("PRESTAMOS");
+        Mprestamos.setText("PRESTAMOS");
 
         jMenuItem17.setBackground(new java.awt.Color(0, 255, 0));
         jMenuItem17.setText("REGISTRAR");
@@ -157,7 +198,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMenuItem17ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem17);
+        Mprestamos.add(jMenuItem17);
 
         jMenuItem16.setBackground(new java.awt.Color(255, 153, 0));
         jMenuItem16.setText("MOSTRAR");
@@ -166,9 +207,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMenuItem16ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem16);
+        Mprestamos.add(jMenuItem16);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(Mprestamos);
 
         setJMenuBar(jMenuBar1);
 
@@ -188,17 +229,17 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+    private void MlibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MlibrosActionPerformed
 
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_MlibrosActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         FrmMostrarLibro frmMostrarLibro = new FrmMostrarLibro(this, pilaLibro);
@@ -216,9 +257,9 @@ public class FrmMenu extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_SALIRActionPerformed
 
-    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
-      
-    }//GEN-LAST:event_jMenu4ActionPerformed
+    private void MalumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MalumnosActionPerformed
+  
+    }//GEN-LAST:event_MalumnosActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
       FrmMostrarAlumno frmMostrarAlumno = new FrmMostrarAlumno(this, pilaAlumno);
@@ -254,11 +295,12 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Malumnos;
+    private javax.swing.JMenu Mlibros;
+    private javax.swing.JMenu Mprestamos;
     private javax.swing.JButton SALIR;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;

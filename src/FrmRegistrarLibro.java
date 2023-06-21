@@ -43,6 +43,24 @@ public class FrmRegistrarLibro extends javax.swing.JFrame {
 
         jLabel5.setText("NUMERO DE PAGINAS");
 
+        NOMBRELIBRO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NOMBRELIBROActionPerformed(evt);
+            }
+        });
+
+        NOMBREEDITORIAL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NOMBREEDITORIALActionPerformed(evt);
+            }
+        });
+
+        NOMBREAUTOR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NOMBREAUTORActionPerformed(evt);
+            }
+        });
+
         NUMERODEPAGINAS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NUMERODEPAGINASActionPerformed(evt);
@@ -207,6 +225,18 @@ public class FrmRegistrarLibro extends javax.swing.JFrame {
     TXT.setVisible(true);
     TXT.setText(m);
     }//GEN-LAST:event_ELIMINARActionPerformed
+
+    private void NOMBRELIBROActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOMBRELIBROActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NOMBRELIBROActionPerformed
+
+    private void NOMBREEDITORIALActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOMBREEDITORIALActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NOMBREEDITORIALActionPerformed
+
+    private void NOMBREAUTORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOMBREAUTORActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NOMBREAUTORActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
